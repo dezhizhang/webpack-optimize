@@ -2,7 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPluin = require('html-webpack-plugin');
 const speedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
+const  { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const smv = new speedMeasureWebpackPlugin()
+
 
 module.exports = smv.wrap({
     mode: 'development',
@@ -20,6 +22,8 @@ module.exports = smv.wrap({
             template: './public/index.html',
             inject: 'body'
         }),
-        new speedMeasureWebpackPlugin()
+        new speedMeasureWebpackPlugin(),
+        new BundleAnalyzerPlugin(),
+
     ]
 })
