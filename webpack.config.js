@@ -22,8 +22,10 @@ module.exports = {
         libraryTarget: 'umd',
     },
     optimization:{
-        minimize:true,
-        minimizer:[new TerserPlugin()]
+        moduleIds:'deterministic',
+        chunkIds:"deterministic",
+        // minimize:true,
+        // minimizer:[new TerserPlugin()]
     },
     module:{
         rules:[
@@ -50,12 +52,5 @@ module.exports = {
             filename: '[name].css'
         }),
         new OptimizeCssAssetsWebpackPlugin(),
-        new PurgecssWebpackPlugin({
-            paths:glob.sync(`${src}/**/*`,{nodir:true})
-        }),
-
-        // new speedMeasureWebpackPlugin(),
-        // new BundleAnalyzerPlugin(),
-
     ]
 }
